@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DragonReach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script type="text/javascript" src="client.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/> 
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <nav>
+            <h3>Dragon Reach</h3>
+            <div class="links">
+                <a href="dashboard.html" onclick="dashboard()"><p>DASHBOARD</p></a>
+                <a href="post.html" onclick="post()"><p>POST</p></a>
+                <a href="search-form.html" onclick="search()"><p>SEARCH</p></a>
+                <a href="confirm.html" onclick="confirm()"><p>CONFIRM</p></a>
+                <a href="login.html" onclick="logout()"><p>LOGOUT</p></a>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="tint">
+        <div class="content">
+            <h2>Search An <span>Event</span></h2>
+            <form>
+                <label>
+                    <input type="text" placeholder="Event Name">
+                </label>
+
+                <div class="time">
+                    <label>Time
+                        <select>
+                            <option>Today</option>
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </label>
+                </div>
+                <label>Tags
+                    <select multiple>
+                        <option selected>All Tags</option>
+                        <option>Arts & Crafts</option>
+                        <option>Music</option>
+                        <option>Sports</option>
+                        <option>Science</option>
+                        <option>Health & Fitness</option>
+                    </select>
+                </label>
+                <label class="costs">Cost
+                    <input type="number" step="1" value="0">
+                </label>
+
+                <button onclick="results()" style="margin-top: 35px">&#x1f50d; Search</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

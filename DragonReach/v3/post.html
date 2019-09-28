@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DragonReach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script type="text/javascript">
+        function post(){
+            var name = $(".name").val();
+            var description = $(".description").val();
+            var location = $(".location").val(); 
+            var starttime = $(".starttime").val();
+            var endtime = $(".endtime").val();
+            var cost = $(".cost").val();
+            $.ajax({
+                type: 'POST',
+                data: {'name': name,'description': description,'location': location,'starttime': starttime, 'endtime': endtime, 'cost': cost},
+                dataType: 'html',
+                url:"http://localhost:8080/post",
+                success: function(msg){
+                    alert('Event Posted')
+                }
+            });
+        };
+        
+    </script>
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <nav>
+            <h3>Dragon Reach</h3>
+            <div class="links">
+                <a href="post.html"><p>POST</p></a>
+                <a href="search-form.html"><p>SEARCH</p></a>
+                <a href="confirm.html"><p>CONFIRM</p></a>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="tint">
+        <div class="content">
+            <h2>Post An <span>Event</span></h2>
+            <form>
+                <label>
+                    <input type="text" placeholder="Event Name" class="name">
+                </label>
+                <label>
+                    <textarea rows="4" placeholder="Event Description" class="description"></textarea>
+                </label>
+                <label >
+                    <input type="text" placeholder="Location" class="location">
+                </label>
+                <div class="time">
+                    <label>Start Time (YYYY-MM-DD HH:MM:SS)
+                        <input type="text" placeholder="End Date/Time" class="starttime">
+                    </label>
+                    <label>End Time (YYYY-MM-DD HH:MM:SS)
+                        <input type="text" placeholder="End Date/Time" class="endtime">
+                    </label>
+                </div>
+                <label>Tags
+                    <select multiple class="tags">
+                        <option>Arts & Crafts</option>
+                        <option>Music</option>
+                        <option>Sports</option>
+                        <option>Science</option>
+                        <option>Health & Fitness</option>
+                    </select>
+                </label>
+                <label>Cost
+                    <input type="text" placeholder="Cost" class="cost">
+                </label>
+                <form>
+                    <input style="margin-top: 35px" type="button" onclick="location.href='dashboard.html'; post();" value="Submit Event" />
+                </form>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

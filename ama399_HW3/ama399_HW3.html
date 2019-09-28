@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<div data-role="header" data-position="fixed">
+		<h1>Homework 3</h1>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<h1>CS275</h1>
+	</div>
+	<title>Lab3</title>
+	<script type="text/javascript" src="client.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"> </script>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/> 
+</head>
+<body>
+	<input type="text" name="input" id="input" placeholder="Enter number">
+	<br>
+	<select id="option">
+		<option value="fact">Factorial</option>
+		<option value="sum">Summation</option>
+	</select>
+	<br>
+	<button onclick="compute()">Go</button>
+	<br>
+	<div id="output"></div>
+</body>
+</html>

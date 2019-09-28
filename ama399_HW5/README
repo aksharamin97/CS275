@@ -1,0 +1,15 @@
+TO RUN:
+	- make sure MySQL server is running
+	- make sure express module is installed in local directory
+	- make sure mysql module is installed in local directory
+	- make sure mysql database contains 3 tables named (student, grades, course) and each are populated with entries that contain the following fields:
+		- student table
+			- studentid, fname, lname, birth, major
+		- grades table
+			- id, courseid, studentid, term, grade
+		- course table
+			- courseid, description
+	- in server.js, enter correct MySQL credentials
+	- run "node server.js" on command line
+	- open browser and enter "localhost:8080" in address bar
+	- click different tabs for the different options

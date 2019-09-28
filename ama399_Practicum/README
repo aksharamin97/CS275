@@ -1,0 +1,7 @@
+To run Part 1:
+Open ama399_prob1.html on web browser, select route and click go. 
+
+To run Part 2:
+1) start server in terminal: node ama399_prob2.js
+2) enter in browser: http://localhost:8080/part2?message=testing&count=5
+3) output displayed in bowser and in terminal

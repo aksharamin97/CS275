@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pacticum Part 1</title>
+	<div data-role="header" data-position="fixed">
+		<h1>Practicum Part 1</h1>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"> </script>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script type="text/javascript">
+
+	function load(){
+		var opt = $("#option").val();
+		var URL = "http://www3.septa.org/hackathon/TransitView/?route="+opt;
+		$.ajax({
+			type: "GET",
+	 		url: URL,
+			dataType: "jsonp",
+	 		success: function(msg){
+	 			var jsonObj = msg.bus;
+	 			console.log(jsonObj);
+	 			var strTab = "<tr><th>Route</th><th>Vehicle Number</th><th>Block ID</th><th>Direction</th><th>Destination</th></tr>";
+	 			for (i = 0; i < 5; i++){
+					strTab += "<tr><td>" + opt + "</td><td>" + jsonObj[i].VehicleID + "</td><td>" + jsonObj[i].BlockID + "</td><td>" + jsonObj[i].Direction + "</td><td>" + jsonObj[i].destination + "</td>";
+				}
+	 			$('#output').html(strTab);
+
+	 		}
+	 	});
+	}
+	</script>
+</head>
+<body>
+	<select id="option">
+		<option value="6">6</option>
+		<option value="14">14</option>
+		<option value="17">17</option>
+		<option value="20">20</option>
+		<option value="23">23</option>
+	</select>
+	<br>
+	<button onclick="load()">Load Schedule</button>
+	<br>
+	<div>
+		<table id="output" border = "2" width="100%"></table>
+	</div>
+</body>
+</html>

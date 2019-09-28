@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DragonReach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script type="text/javascript">
+        function create(){
+            var uname = $(".uname").val();
+            var pass = $(".pass").val();
+            $.ajax({
+                type: 'POST',
+                data: {'uname': uname,'pass': pass},
+                dataType: 'html',
+                url:"http://localhost:8080/create",
+                context: document.body,
+                success: function(msg){
+                
+                }
+            });
+        };
+        
+    </script>
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <nav>
+            <h3>Dragon Reach</h3>
+            <div class="links">
+                <a href="post.html"><p>POST</p></a>
+                <a href="search-form.html"><p>SEARCH</p></a>
+                <a href="confirm.html"><p>CONFIRM</p></a>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="tint">
+        <div class="content">
+            <h2>Create An <span>Account</span></h2>
+            <form>
+                <label>
+                    <input type="text" placeholder="Username" class="uname">
+                </label>
+                <label>
+                    <input type="text" placeholder="Password" class="pass">
+                </label>
+                <label >
+                    <input type="text" placeholder="Confirm">
+                </label>
+                <label>Tags
+                    <select multiple>
+                        <option>Arts & Crafts</option>
+                        <option>Music</option>
+                        <option>Sports</option>
+                        <option>Science</option>
+                        <option>Health & Fitness</option>
+                    </select>
+                </label>
+                <input style="margin-top: 35px" type="button" onclick="location.href='login.html';create();" value="Create a New Account" />
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

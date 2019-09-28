@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DragonReach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function(){
+            var name = sessionStorage.name;
+            var time = sessionStorage.time;
+            var tags = sessionStorage.tags;
+            var cost = sessionStorage.cost;
+            $.ajax({
+                type: 'GET',
+                data: {'name': name,'time': time,'tags': tags,'cost': cost},
+                dataType: 'html',
+                url:"http://localhost:8080/results",
+                context: document.body,
+                success: function(msg){
+                    $('.content').append(msg);
+
+                    
+                }
+            });
+        });
+    </script>
+
+    <style>
+            /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+
+        h1{
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <nav>
+            <h3>Dragon Reach</h3>
+            <div class="links">
+                <a href="post.html"><p>POST</p></a>
+                <a href="search-form.html"><p>SEARCH</p></a>
+                <a href="confirm.html"><p>CONFIRM</p></a>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="tint">
+        <div class="content">
+            <div id="map"></div>
+                
+        </div>
+    </div>
+</main>
+    <script type="text/javascript">
+        function initMap() {
+                       // The location of Uluru
+                       var center = {lat: 39.95554, lng: -75.1893};
+                       // The map, centered at Uluru
+                       var map = new google.maps.Map(
+                           document.getElementById('map'), {zoom: 15, center: center});
+
+                       var geocoder = new google.maps.Geocoder;
+                       geocodeAddress(geocoder, map);
+                    }
+
+                    function geocodeAddress(geocoder, resultsMap, infowindow) {
+                     var address = '26 West Levering Mill Road, Bala Cynwyd, PA';
+
+
+                     $.each($(".location"), function(i, val){
+                         var number = i+1;
+                         var loc = $(val).html();
+                         geocoder.geocode({'address': loc}, function(results, status) {
+                             if (status === 'OK') {
+                                 console.log(results[0].geometry.location);
+                                 var marker = new google.maps.Marker({
+                                     map: resultsMap,
+                                     position: results[0].geometry.location,
+                                     label: {color: 'white',background: "#2B3252", text: "" + number}
+                                 });
+
+
+                             } else {
+                                 alert('Geocode was not successful for the following reason: ' + status);
+                             }
+                             });
+
+                         })
+
+                      }
+                    </script>
+<script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz5hX1tNTZHtljaGSX8mJO4tHBQCgDSps
+&callback=initMap"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DragonReach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script type="text/javascript">
+        function login(){
+            var uname = $(".uname").val();
+            var pass = $(".pass").val();
+            $.ajax({
+                type: 'GET',
+                data: {'uname': uname,'pass': pass},
+                dataType: 'html',
+                url:"http://localhost:8080/login",
+                context: document.body,
+                success: function(msg){
+                    window.location.href = "http://localhost:8080/dashboard.html";
+                }
+        
+            });
+        };
+        
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            font-size: 120%;
+        }
+
+    </style>
+</head>
+<body>
+<main>
+    <div class="tint">
+        <div class="content">
+            <h1>Dragon <span>Reach</span></h1>
+            <label>
+                <input type="text" placeholder="Username" class="uname">
+            </label>
+            <label>
+                <input type="password" placeholder="Password" class="pass">
+            </label>
+            <form>
+                <input style="margin-top: 35px" type="button" onclick="login()" value="Login"/>
+            
+                <input style="margin-top: 35px" type="button" onclick="location.href='create-account.html';" value="Create a New Account" />
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
